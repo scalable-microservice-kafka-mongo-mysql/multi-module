@@ -26,8 +26,13 @@ public class InventoryServiceApplication {
 			iphone12.setSkuCode("iphone_12");
 			iphone12.setQuantity(0);
 
+			Inventory ring = new Inventory();
+			iphone12.setSkuCode("ring");
+			iphone12.setQuantity(69);
+
 			inventoryRepository.save(iphone13);
 			inventoryRepository.save(iphone12);
+			inventoryRepository.save(ring);
 
 
 		};

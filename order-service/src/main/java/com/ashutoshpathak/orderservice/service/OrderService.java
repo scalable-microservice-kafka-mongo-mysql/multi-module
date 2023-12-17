@@ -7,12 +7,16 @@ import com.ashutoshpathak.orderservice.model.OrderLineItems;
 import com.ashutoshpathak.orderservice.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class OrderService {
+
+    @Autowired
+    WebClient webClient;
 
     @Autowired
     OrderRepository orderRepository;
@@ -33,12 +37,23 @@ public class OrderService {
         order.setOrderLineItemsList(orderLineItems);
 
         orderRepository.save(order);
+
+//        //Call inventory service and place order if product is in stock
+//        Boolean inventoryExists = webClient.get()
+//                .uri("http://localhost:8082/api/inventory")
+//                .retrieve()
+//                .bodyToMono(Boolean.class)
+//                .block();
+
+//        if(Boolean.TRUE.equals(inventoryExists)) {
+//            orderRepository.save(order);
+//        } else{
+//            throw new IllegalArgumentException("insufficient inventory");
+//        }
     }
 
     private OrderLineItems mapToOrderLineItems(OrderLineItemsDTO orderLineItemsDTO) {
         return OrderLineItems.builder()
-                .id(orderLineItemsDTO.getId())
-                .price(orderLineItemsDTO.getPrice())
                 .quantity(orderLineItemsDTO.getQuantity())
                 .skuCode(orderLineItemsDTO.getSkuCode())
                 .build();
