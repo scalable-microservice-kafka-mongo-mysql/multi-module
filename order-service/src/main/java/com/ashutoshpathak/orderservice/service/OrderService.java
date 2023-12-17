@@ -18,7 +18,7 @@ import java.util.UUID;
 public class OrderService {
 
     @Autowired
-    WebClient webClient;
+    WebClient.Builder webClient;
 
     @Autowired
     OrderRepository orderRepository;
@@ -51,7 +51,7 @@ public class OrderService {
 
         List<OrderLineItemsDTO> orderLineItemsList = orderRequest.getOrderLineItemsRequestList();
 
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://localhost:8082/api/inventory/check");
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://inventory-service/api/inventory/check");
 
         for (OrderLineItemsDTO orderLineItem : orderLineItemsList) {
             uriBuilder.queryParam("skuCode", orderLineItem.getSkuCode());
@@ -60,7 +60,7 @@ public class OrderService {
 
         String uriWithParams = uriBuilder.toUriString();
 
-        Boolean inventoryExists = webClient.get()
+        Boolean inventoryExists = webClient.build().get()
                 .uri(uriWithParams)
                 .retrieve()
                 .bodyToMono(Boolean.class)
