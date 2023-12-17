@@ -51,7 +51,7 @@ public class OrderService {
 
         List<OrderLineItemsDTO> orderLineItemsList = orderRequest.getOrderLineItemsRequestList();
 
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://localhost:8082/api/inventory");
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://localhost:8082/api/inventory/check");
 
         for (OrderLineItemsDTO orderLineItem : orderLineItemsList) {
             uriBuilder.queryParam("skuCode", orderLineItem.getSkuCode());
