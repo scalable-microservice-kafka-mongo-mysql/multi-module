@@ -16,6 +16,7 @@
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
+<!--        <spring-security.version>6.2.2</spring-security.version>-->
     </properties>
 
 
@@ -68,7 +69,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.2.2</version>
         </dependency>
 
 
