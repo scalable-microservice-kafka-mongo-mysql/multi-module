@@ -10,4 +10,11 @@ public class ApiGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayApplication.class, args);
     }
+
+    /*
+        WORKING LIKE A CHARM - SECURED API GATEWAY
+        EXCHANGING TOKES FROM KEYCLOAK
+        USING CLIENT CREDS FLOW
+        SUCCESSFULLY
+     */
 }
