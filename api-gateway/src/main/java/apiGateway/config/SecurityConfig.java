@@ -26,8 +26,13 @@ public class SecurityConfig {
         return httpSecurity.cors(Customizer.withDefaults())
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(httpRequests -> httpRequests
+                        .requestMatchers("http://localhost:8761").permitAll()
+                        .requestMatchers("/eureka").permitAll()
+                        .requestMatchers("/eureka/").permitAll()
+                        .requestMatchers("/eureka/web").permitAll()
                         .requestMatchers("/eureka/**").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
+//                        .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()))
                 .build();

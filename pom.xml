@@ -34,18 +34,19 @@
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
+<!--        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <scope>import</scope>
-            <type>pom</type>
-            <version>Camden.SR7</version>
-        </dependency>
-        <!-- sounds like I don't even need this, and it'll be pulled in by the BOM above -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--            <scope>import</scope>-->
+<!--            <type>pom</type>-->
+<!--            <version>Camden.SR7</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; sounds like I don't even need this, and it'll be pulled in by the BOM above &ndash;&gt;-->
 
 
     </dependencies>
