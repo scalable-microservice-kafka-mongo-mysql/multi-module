@@ -17,7 +17,7 @@ public class InventoryController {
     @GetMapping("/check")
     @ResponseStatus(HttpStatus.OK)
     public boolean isInStock(@RequestParam("skuCode") List<String> skuCodes,
-                             @RequestParam("quantity") List<Integer> quantities) {
+                             @RequestParam("quantity") List<Integer> quantities) throws InterruptedException {
         // Assuming equal size for skuCodes and quantities
         for (int i = 0; i < skuCodes.size(); i++) {
             String skuCode = skuCodes.get(i);
