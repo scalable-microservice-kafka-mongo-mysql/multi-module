@@ -27,6 +27,13 @@ public class OrderController {
     @Retry(name = "inventory")
     public CompletableFuture<String> placeOrder(@RequestBody OrderRequest orderRequest) {
         log.info("Placing Order");
+        //Secure api gateway working fine, but getting error message from the below
+        //fallbackMethod ...
+        //I suspect, Programming Techie intentionally did sth
+        //To demo Resilience4J Circuit Breaker capabilites or sth...
+        //Will have to continue from there ...
+        //Like try removing all Resilience4J code, make order service pass, and then bring back
+        //Resilience4J circuit breaker logic
         return CompletableFuture.supplyAsync(() -> orderService.placeOrder(orderRequest));
     }
 
